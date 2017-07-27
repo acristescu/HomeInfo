@@ -1,6 +1,8 @@
 package io.zenandroid.homeinfo.landing;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -17,8 +19,10 @@ import io.zenandroid.homeinfo.model.darksky.WeatherResponse;
 public class LandingActivity extends BaseActivity implements LandingContract.View {
 
 	@BindView(R.id.text) TextView textView;
+	@BindView(R.id.hourly_forecast_recycler) RecyclerView hourlyRecycler;
 
 	private LandingContract.Presenter presenter;
+	private HourlyForecastAdapter hourlyForecastAdapter = new HourlyForecastAdapter();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,9 @@ public class LandingActivity extends BaseActivity implements LandingContract.Vie
 		setContentView(R.layout.a_landing);
 		Injector.get().inject(this);
 		ButterKnife.bind(this);
+
+		hourlyRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+		hourlyRecycler.setAdapter(hourlyForecastAdapter);
 
 		presenter = new LandingPresenter(this);
 	}
@@ -44,6 +51,7 @@ public class LandingActivity extends BaseActivity implements LandingContract.Vie
 
 	@Override
 	public void displayWeatherReport(WeatherResponse response) {
+		hourlyForecastAdapter.setForecast(response.getHourly());
 		System.out.println("Forecast received:");
 		final SimpleDateFormat sdf = new SimpleDateFormat("EE");
 		final StringBuilder sb = new StringBuilder();

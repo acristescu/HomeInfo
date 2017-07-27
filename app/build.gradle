@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "26.0.0"
     defaultConfig {
-        applicationId "io.zenandroid.greenfieldtemplate"
+        applicationId "io.zenandroid.homeinfo"
         minSdkVersion 22
         targetSdkVersion 25
         versionCode 1
