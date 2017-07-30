@@ -2,6 +2,10 @@ package io.zenandroid.homeinfo;
 
 import android.content.Context;
 
+import com.joanzapata.iconify.Iconify;
+import com.joanzapata.iconify.fonts.MeteoconsModule;
+import com.joanzapata.iconify.fonts.WeathericonsModule;
+
 import io.zenandroid.homeinfo.dagger.Injector;
 
 public class Application extends android.app.Application {
@@ -25,6 +29,9 @@ public class Application extends android.app.Application {
 	public void onCreate() {
 		super.onCreate();
 		instance = this;
+		Iconify
+				.with(new MeteoconsModule())
+				.with(new WeathericonsModule());
 	}
 
 	public static Application getInstance() {

@@ -1,10 +1,14 @@
 package io.zenandroid.homeinfo.landing;
 
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.joanzapata.iconify.IconDrawable;
+import com.joanzapata.iconify.widget.IconTextView;
 
 import java.util.Date;
 
@@ -13,6 +17,7 @@ import butterknife.ButterKnife;
 import io.zenandroid.homeinfo.R;
 import io.zenandroid.homeinfo.model.darksky.DataBlock;
 import io.zenandroid.homeinfo.model.darksky.DataPoint;
+import io.zenandroid.homeinfo.util.WeatherIconsUtil;
 
 /**
  * Created by acristescu on 27/07/2017.
@@ -61,6 +66,18 @@ public class HourlyForecastAdapter extends RecyclerView.Adapter<HourlyForecastAd
         holder.graphTemperatureView.setPrevTemp(prev.getTemperature());
         holder.graphTemperatureView.setNextTemp(next.getTemperature());
         holder.graphTemperatureView.setTemp(point.getTemperature());
+
+        holder.icon.setImageDrawable(
+                new IconDrawable(holder.icon.getContext(), WeatherIconsUtil.getIcon(point.getIcon()))
+                        .sizeDp(35)
+                        .color(0x01579B)
+        );
+
+        if(point.getPrecipProbability() != null && point.getPrecipProbability() > 0) {
+            holder.rainChanceView.setText(String.format("{wi_raindrops 140%%} %d%%", (int)(point.getPrecipProbability() * 100)));
+        } else {
+            holder.rainChanceView.setText("");
+        }
     }
 
     @Override
@@ -73,6 +90,8 @@ public class HourlyForecastAdapter extends RecyclerView.Adapter<HourlyForecastAd
         @BindView(R.id.textView) TextView textView;
         @BindView(R.id.time) TextView time;
         @BindView(R.id.graph) GraphTemperatureView graphTemperatureView;
+        @BindView(R.id.icon) AppCompatImageView icon;
+        @BindView(R.id.rain_chance) IconTextView rainChanceView;
 
         public ViewHolder(View itemView) {
             super(itemView);

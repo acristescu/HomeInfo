@@ -78,8 +78,15 @@ public class GraphTemperatureView extends View {
         path.close();
 
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
         paint.setColor(0x66FFFFFF);
         canvas.drawPath(path, paint);
+
+        paint.setColor(0xFFB3E5FC);
+        paint.setStrokeWidth(3);
+        canvas.drawLine(0, (int)((tipLevel + prevTipLevel) / 2), w / 2, (int)tipLevel, paint);
+        canvas.drawLine(w / 2, (int)tipLevel, w, (int)((tipLevel + nextTipLevel) / 2), paint);
+
     }
 
     private double calculateTipLevel(double temp) {

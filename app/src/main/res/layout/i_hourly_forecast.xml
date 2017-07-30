@@ -5,19 +5,20 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#4FC3F7">
+    android:background="#4FC3F7"
+    >
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal|top"
-        android:textColor="#FFFFFF"
-        android:shadowColor="#000000"
+        android:textStyle="bold"
+        android:shadowColor="#FFFFFF"
         android:shadowRadius="1"
         android:shadowDx="1"
         android:shadowDy="1"
-        android:textStyle="bold"
+        android:textColor="#01579B"
         android:layout_marginBottom="2dp"
         />
     <io.zenandroid.homeinfo.landing.GraphTemperatureView
@@ -25,9 +26,32 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         />
+
+    <com.joanzapata.iconify.widget.IconTextView
+        android:id="@+id/rain_chance"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#66FFFFFF"
+        android:textStyle="bold"
+        android:shadowColor="#FFFFFF"
+        android:shadowRadius="1"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:textColor="#01579B"
+        android:gravity="center_horizontal|top"
+        android:paddingBottom="3dp"
+        />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/icon"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#66FFFFFF"
+        />
+
     <TextView
         android:id="@+id/time"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal|top"
@@ -36,7 +60,7 @@
         android:background="#66FFFFFF"
         android:textStyle="bold"
         android:shadowColor="#FFFFFF"
-        android:shadowRadius="1"
+        android:shadowRadius="5"
         android:shadowDx="1"
         android:shadowDy="1"
         android:textColor="#01579B"

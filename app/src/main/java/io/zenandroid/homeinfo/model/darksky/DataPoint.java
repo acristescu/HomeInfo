@@ -13,7 +13,7 @@ public class DataPoint {
     private String precipIntensity;
     private String precipIntensityMax;
     private String precipIntensityMaxTime;
-    private String precipProbability;
+    private Double precipProbability;
     private String precipType;
     private String precipAccumulation;
     private double temperature;
@@ -79,7 +79,7 @@ public class DataPoint {
         return precipIntensityMaxTime;
     }
 
-    public String getPrecipProbability() {
+    public Double getPrecipProbability() {
         return precipProbability;
     }
 
